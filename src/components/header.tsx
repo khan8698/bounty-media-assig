@@ -9,16 +9,13 @@ function Header() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar>
           <Grid container>
             <Grid item xs={6}>
               <Typography
                 variant="h6"
                 noWrap
-                component="a"
-                href="/"
                 sx={{
-                  mr: 2,
                   display: { xs: "none", md: "flex" },
                   fontFamily: "monospace",
                   fontWeight: 700,
@@ -30,13 +27,11 @@ function Header() {
                 Where in the world?
               </Typography>
             </Grid>
-            <Grid item xs={6}>
-              <>
-                <IconButton sx={{ p: 0 }}>
-                  <NightlightOutlinedIcon />
-                </IconButton>
-                Dark Mode
-              </>
+            <Grid item xs={6} justifyContent="flex-end">
+              <IconButton>
+                <NightlightOutlinedIcon />
+              </IconButton>
+              Dark Mode
             </Grid>
           </Grid>
         </Toolbar>

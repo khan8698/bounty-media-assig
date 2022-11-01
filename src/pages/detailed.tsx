@@ -1,6 +1,6 @@
 import { Container, Grid, IconButton } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../components/header";
 import Loading from "../components/loading";
 import { getCountryData } from "../Services/API";
@@ -9,6 +9,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 function CountryDetail() {
   const [searchParams] = useSearchParams();
   const countryName = searchParams.get("country") || "";
+  let navigate = useNavigate();
 
   const [countryData, setCountryData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,9 +51,13 @@ function CountryDetail() {
   return (
     <div className="App">
       <Header />
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <div>
-          <button>
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             <IconButton sx={{ p: 0 }}>
               <ArrowBackIcon />
             </IconButton>

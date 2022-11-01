@@ -1,6 +1,7 @@
-import { Container, Grid, MenuItem, Select } from "@mui/material";
+import { Container, Grid, Link, MenuItem, Select } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/header";
 import Loading from "../components/loading";
 import { getAllCountries, getCountriesByRegion } from "../Services/API";
@@ -10,6 +11,7 @@ function Home() {
   const [selectedRegion, setSelectedRegion] = useState<string>("");
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
   const [isLoading, setIsLoading] = useState(false);
+  let navigate = useNavigate();
 
   const getAllCountriesList = () => {
     setIsLoading(true);
@@ -52,14 +54,8 @@ function Home() {
 
   return (
     <div className="App">
-      {/* <header>
-        Where in the world
-        <span>Dark Mpde</span>
-      </header> */}
-
       <Header />
-
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Grid container>
           <Grid item xs={6}>
             <TextField
@@ -72,8 +68,7 @@ function Home() {
           <Grid item xs={6}>
             <div>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                displayEmpty={false}
                 value={selectedRegion}
                 onChange={(e) => {
                   setSelectedRegion(e.target.value);
@@ -81,7 +76,7 @@ function Home() {
                 label="Age"
                 // onChange={handleChange}
               >
-                <MenuItem value={""}> - </MenuItem>
+                <MenuItem value=""> - </MenuItem>
                 {regions.map((region, i) => {
                   return (
                     <MenuItem key={i} value={region}>
@@ -101,7 +96,15 @@ function Home() {
               <>
                 {countriesList.map((country, i) => {
                   return (
-                    <Grid item lg={3} xs={12} key={i}>
+                    <Grid
+                      item
+                      onClick={() => {
+                        navigate(`detail?country=${country.name.common}`);
+                      }}
+                      lg={3}
+                      xs={12}
+                      key={i}
+                    >
                       <img src={country.flags.png} alt={country.name.common} />
                       <div>Country Name: {country.name.common}</div>
                       <div>Population {country.population}</div>
