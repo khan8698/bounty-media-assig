@@ -1,4 +1,14 @@
-import { Container, Grid, Link, MenuItem, Select } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Link,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -102,14 +112,27 @@ function Home() {
                         navigate(`detail?country=${country.name.common}`);
                       }}
                       lg={3}
+                      md={4}
+                      sm={6}
                       xs={12}
                       key={i}
                     >
-                      <img src={country.flags.png} alt={country.name.common} />
-                      <div>Country Name: {country.name.common}</div>
-                      <div>Population {country.population}</div>
-                      <div>Region: {country.region} </div>
-                      <div>Capital: {country.capital?.join(",")}</div>
+                      <Card sx={{ maxWidth: 345 }}>
+                        <CardActionArea>
+                          <CardMedia
+                            component="img"
+                            height="140"
+                            image={country.flags.png}
+                            alt={country.name.common}
+                          />
+                          <CardContent>
+                            <div>Country Name: {country.name.common}</div>
+                            <div>Population {country.population}</div>
+                            <div>Region: {country.region} </div>
+                            <div>Capital: {country.capital?.join(",")}</div>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
                     </Grid>
                   );
                 })}

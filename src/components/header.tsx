@@ -13,11 +13,10 @@ function Header() {
           <Grid container>
             <Grid item xs={6}>
               <Typography
-                variant="h6"
+                variant="h5"
                 noWrap
                 sx={{
                   display: { xs: "none", md: "flex" },
-                  fontFamily: "monospace",
                   fontWeight: 700,
                   letterSpacing: ".3rem",
                   color: "inherit",
