@@ -5,11 +5,12 @@ import Container from "@mui/material/Container";
 import NightlightOutlinedIcon from "@mui/icons-material/NightlightOutlined";
 import { Grid, IconButton } from "@mui/material";
 
+
 function Header() {
   return (
-    <AppBar position="static">
+    <AppBar color="default" position="fixed">
       <Container maxWidth="xl">
-        <Toolbar>
+        <Toolbar >
           <Grid container>
             <Grid item xs={6}>
               <Typography
@@ -18,17 +19,21 @@ function Header() {
                 sx={{
                   display: { xs: "none", md: "flex" },
                   fontWeight: 700,
-                  letterSpacing: ".3rem",
+                  letterSpacing: ".1rem",
                   color: "inherit",
                   textDecoration: "none",
+                  textAlign: 'left',
                 }}
               >
                 Where in the world?
               </Typography>
             </Grid>
-            <Grid item xs={6} justifyContent="flex-end">
+            <Grid item xs={6} sx={{
+                  display: { xs: "none", md: "flex" },
+                  fontWeight: 900,
+                }} justifyContent="flex-end">
               <IconButton>
-                <NightlightOutlinedIcon />
+                <NightlightOutlinedIcon/>
               </IconButton>
               Dark Mode
             </Grid>

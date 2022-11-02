@@ -9,14 +9,32 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/header";
 import Loading from "../components/loading";
 import { getAllCountries, getCountriesByRegion } from "../Services/API";
 
+import "./styles.css";
+import Box from '@mui/material/Box';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+
+
+interface State {
+  amount: string;
+  password: string;
+  weight: string;
+  weightRange: string;
+  showPassword: boolean;
+}
+
+
+
 function Home() {
+
+
   const [countriesList, setCountriesList] = useState<Array<any>>([]);
   const [selectedRegion, setSelectedRegion] = useState<string>("");
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
@@ -65,15 +83,21 @@ function Home() {
   return (
     <div className="App">
       <Header />
-      <Container maxWidth="xl">
-        <Grid container>
-          <Grid item xs={6}>
-            <TextField
-              id="filled-search"
-              label="Search for a country..."
-              type="search"
-              variant="filled"
-            />
+      <Container maxWidth="xl" >
+        <Grid container >
+          <Grid item xs={6} >
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', backgroung:'inherit' }} >
+      <div>
+        <FormControl fullWidth sx={{ marginTop: 16, width: "200%", boxShadow: 3}}>
+          <OutlinedInput
+            id="outlined-adornment-amount"
+
+            startAdornment={<InputAdornment position="start" sx={{ p: 4, paddingRight: 3}}><i className="fa fa-search fa-lg" aria-hidden="true"></i></InputAdornment>}
+            placeholder="Search for a Country"
+          />
+        </FormControl>
+      </div>
+    </Box>
           </Grid>
           <Grid item xs={6}>
             <div>
@@ -83,6 +107,7 @@ function Home() {
                 onChange={(e) => {
                   setSelectedRegion(e.target.value);
                 }}
+                sx={{marginTop:16, width:'25%'}}
                 label="Age"
                 // onChange={handleChange}
               >
@@ -117,16 +142,16 @@ function Home() {
                       xs={12}
                       key={i}
                     >
-                      <Card sx={{ maxWidth: 345 }}>
+                      <Card sx={{ maxWidth: 345, marginTop: 8, marginX:'8' }}>
                         <CardActionArea>
                           <CardMedia
                             component="img"
-                            height="140"
                             image={country.flags.png}
                             alt={country.name.common}
+                            sx={{height:'200px'}}
                           />
-                          <CardContent>
-                            <div>Country Name: {country.name.common}</div>
+                          <CardContent sx={{height:'150px', textAlign: 'left'}}>
+                            <div><h2>{country.name.common}</h2></div>
                             <div>Population {country.population}</div>
                             <div>Region: {country.region} </div>
                             <div>Capital: {country.capital?.join(",")}</div>

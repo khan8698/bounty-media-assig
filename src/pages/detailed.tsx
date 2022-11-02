@@ -51,21 +51,22 @@ function CountryDetail() {
   return (
     <div className="App">
       <Header />
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ marginTop: 16, width: "200%"}}>
         <div>
           <button
             onClick={() => {
               navigate("/");
             }}
+            style={{padding:12, border: 0}}
           >
-            <IconButton sx={{ p: 0 }}>
+            <IconButton sx={{ p: 0}}>
               <ArrowBackIcon />
             </IconButton>
             Back
           </button>
         </div>
         <div>
-          <Grid container>
+          <Grid container sx={{ marginTop: 8,textAlign: 'left' }}>
             {isLoading || !countryData ? (
               <Loading />
             ) : (
@@ -76,7 +77,8 @@ function CountryDetail() {
                     alt={countryData.name.common}
                   />
                 </Grid>
-                <Grid item lg={3} xs={12}>
+                <Grid item lg={3} xs={12} sx={{textAlign: 'left' }}>
+                  <div><h1>{countryData.name.common}</h1></div>
                   <div>Native Name: {countryData.name.common}</div>
                   <div>Population {countryData.population}</div>
                   <div>Region: {countryData.region} </div>
