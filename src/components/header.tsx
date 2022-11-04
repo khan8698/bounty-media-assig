@@ -7,16 +7,16 @@ import { Grid, IconButton } from "@mui/material";
 
 function Header() {
   return (
-    <AppBar color="default" position="fixed">
+    <AppBar color="default" position="fixed"  >
       <Container maxWidth="xl" disableGutters>
-        <Toolbar>
+        <Toolbar sx={{background:"white",  borderBottom: 1, borderColor: 'white' }} >
           <Grid container>
             <Grid item xs={6}>
               <Typography
                 variant="h5"
                 noWrap
                 sx={{
-                  display: { xs: "none", md: "flex" },
+                  display: { xs: "block", md: "flex" },
                   fontWeight: 700,
                   letterSpacing: ".1rem",
                   color: "inherit",

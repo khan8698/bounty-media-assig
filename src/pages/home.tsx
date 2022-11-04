@@ -71,15 +71,15 @@ function Home() {
     <div className="App">
       <Header />
       <Container maxWidth="xl">
-        <Grid container>
-          <Grid item xs={6}>
+        <Grid container lg={12} md={12} sm={12} sx={{ marginTop: 16, width: "100%",  display: 'flex', justifyContent: 'space-around', borderRadius: 1, }}>
+          <Grid item lg={11} md={11} sm={12} xs={12}    sx={{ display:"flex",  background:""}}>
             <Box
-              sx={{ display: "flex", flexWrap: "wrap", backgroung: "inherit" }}
+              sx={{ display: "flex",width: "full", flexWrap: "wrap", boxShadow: 3, backgroung: "inherit",  }} 
             >
               <div>
                 <FormControl
                   fullWidth
-                  sx={{ marginTop: 16, width: "200%", boxShadow: 3 }}
+              
                 >
                   <OutlinedInput
                     id="outlined-adornment-amount"
@@ -97,7 +97,10 @@ function Home() {
               </div>
             </Box>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item lg={1}
+                      md={1}
+                      sm={12}
+                      xs={12}    sx={{ display:"flex",     alignItems: '',    background:"",}}>
             <div>
               <Select
                 displayEmpty
@@ -106,10 +109,10 @@ function Home() {
                   setSelectedRegion(e.target.value);
                 }}
                 sx={{
-                  marginTop: 16,
-                  width: "25%",
-                  float: "right",
-                  marginRight: "2rem",
+                  boxShadow: 3, 
+                  width: "200%",
+              
+               
                 }}
                 label="Regions"
                 // onChange={handleChange}
